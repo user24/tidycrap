@@ -1,0 +1,8 @@
+{
+  "name": "tidycrap",
+  "author": "Howard Yeend",
+  "homepage": "https://user24.github.io/tidycrap",
+  "dependencies": {
+    "commander": "^4.1.1"
+  }
+}
