@@ -46,13 +46,13 @@ exec('yarn add gh-pages', {
     console.log('OK');
 
     console.log('Removing CRA stuff I don\'t use');
-    fs.unlink(`${options.path}/src/logo.svg`, (err) => { err && console.error(err) });
-    fs.unlink(`${options.path}/public/logo192.png`, (err) => { err && console.error(err) });
-    fs.unlink(`${options.path}/public/logo512.png`, (err) => { err && console.error(err) });
-    fs.unlink(`${options.path}/public/manifest.json`, (err) => { err && console.error(err) });
-    fs.unlink(`${options.path}/src/serviceWorker.js`, (err) => { err && console.error(err) });
-    fs.writeFile(`${options.path}/src/App.css`, "", (err) => { err && console.error(err) });
-    fs.writeFile(`${options.path}/src/index.css`, "", (err) => { err && console.error(err) });
+    fs.unlinkSync(`${options.path}/src/logo.svg`);
+    fs.unlinkSync(`${options.path}/public/logo192.png`);
+    fs.unlinkSync(`${options.path}/public/logo512.png`);
+    fs.unlinkSync(`${options.path}/public/manifest.json`);
+    fs.unlinkSync(`${options.path}/src/serviceWorker.js`);
+    fs.writeFileSync(`${options.path}/src/App.css`, "");
+    fs.writeFileSync(`${options.path}/src/index.css`, "");
     fs.createReadStream(`${__dirname}/templates/index.html`).pipe(fs.createWriteStream(`${options.path}/public/index.html`));
     fs.createReadStream(`${__dirname}/templates/App.js`).pipe(fs.createWriteStream(`${options.path}/src/App.js`));
     fs.createReadStream(`${__dirname}/templates/index.js`).pipe(fs.createWriteStream(`${options.path}/src/index.js`));
