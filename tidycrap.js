@@ -29,13 +29,13 @@ exec('yarn add gh-pages', {
   const homepage = `https://${options.username}.github.io/${name}`;
 
   console.log('Modifying package.json');
-  // Modify package.json with gtihub pages deets.
+  // Modify package.json with github pages deets.
   const packageJsonLocation = `${options.path}/package.json`;
   const packageJson = require(packageJsonLocation);
   packageJson.homepage = homepage;
   packageJson.scripts = packageJson.scripts || {};
   packageJson.scripts.predeploy = 'yarn run build';
-  packageJson.scripts.deploy = 'gh-pages -b master -d build';
+  packageJson.scripts.deploy = 'gh-pages -d build';
 
   const fs = require('fs');
   fs.writeFile(packageJsonLocation, JSON.stringify(packageJson, undefined, 2), (err) => {
