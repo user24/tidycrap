@@ -45,12 +45,20 @@ exec('yarn add gh-pages', {
     }
     console.log('OK');
 
+    function tryDelete(path) {
+      try {
+        fs.unlinkSync(path);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
     console.log('Removing CRA stuff I don\'t use');
-    fs.unlinkSync(`${options.path}/src/logo.svg`);
-    fs.unlinkSync(`${options.path}/public/logo192.png`);
-    fs.unlinkSync(`${options.path}/public/logo512.png`);
-    fs.unlinkSync(`${options.path}/public/manifest.json`);
-    fs.unlinkSync(`${options.path}/src/serviceWorker.js`);
+    tryDelete(`${options.path}/src/logo.svg`);
+    tryDelete(`${options.path}/public/logo192.png`);
+    tryDelete(`${options.path}/public/logo512.png`);
+    tryDelete(`${options.path}/public/manifest.json`);
+    tryDelete(`${options.path}/src/serviceWorker.js`);
     fs.writeFileSync(`${options.path}/src/App.css`, "");
     fs.writeFileSync(`${options.path}/src/index.css`, "");
     fs.createReadStream(`${__dirname}/templates/index.html`).pipe(fs.createWriteStream(`${options.path}/public/index.html`));
